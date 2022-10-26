@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a4be220830e90ea4eb88b48b7fd376ce, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.024967156, g: 0.022754043, b: 0.070475414, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,7 +152,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860179102}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &687906430
 GameObject:
@@ -286,21 +286,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 860179102}
     m_Modifications:
+    - target: {fileID: 7898936566218705618, guid: abfe5c6225ddf8742aa07cdb37a7f1a7, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1400573392}
     - target: {fileID: 7898936566218705619, guid: abfe5c6225ddf8742aa07cdb37a7f1a7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7898936566218705619, guid: abfe5c6225ddf8742aa07cdb37a7f1a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7898936566218705619, guid: abfe5c6225ddf8742aa07cdb37a7f1a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7898936566218705619, guid: abfe5c6225ddf8742aa07cdb37a7f1a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7898936566218705619, guid: abfe5c6225ddf8742aa07cdb37a7f1a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -364,13 +368,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860179101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.295025, y: 5.6927185, z: 7.2357492}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 401029348}
-  - {fileID: 1400573391}
   - {fileID: 950363722}
+  - {fileID: 1719844819}
+  - {fileID: 1400573391}
+  - {fileID: 401029348}
+  - {fileID: 1402478138}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -519,12 +525,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400573390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4, y: 0, z: -23.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860179102}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1400573392
 MonoBehaviour:
@@ -547,5 +553,100 @@ MonoBehaviour:
   - {fileID: 1776010198621243810, guid: 82c9df14711ba694c81fb00e9d11a784, type: 3}
   - {fileID: 5678697912942812008, guid: c3d7fe5f2f188d940b31e835a1b11afd, type: 3}
   - {fileID: 3670198402550898589, guid: 39b9eefd70cfdce43af9e9fee5b3acf6, type: 3}
+  - {fileID: 3670198402550898589, guid: fc7f0cab269e12a41bc5e1be0203a6ad, type: 3}
+  deadZone: {fileID: 6626374648344462688, guid: 917fedcb78f8af045802d6d4322d91eb, type: 3}
   level: 1
   sizeMaze: 6
+--- !u!1 &1402478137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402478138}
+  - component: {fileID: 1402478139}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402478138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402478137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 860179102}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402478139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402478137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685261a4eaa6bf54c9a26fbcd5142ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabEnemiesList:
+  - {fileID: 2183469683866167251, guid: 6202a724dfebd904ea4168d156571700, type: 3}
+  quantityEnemies: 20
+--- !u!1 &1719844818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719844819}
+  - component: {fileID: 1719844820}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1719844819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719844818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 860179102}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1719844820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719844818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4795038e692283e46b782be6a233dce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPositionsList: []
+  spawnPositionObjectName: SpawnPosition

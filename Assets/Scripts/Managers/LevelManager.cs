@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Labyrinth.Core;
+using DG.Tweening;
 
 namespace Lalo.Managers
 {
@@ -9,32 +11,38 @@ namespace Lalo.Managers
     {
         [Header("References")]
         public List<GameObject> mazeSliceList;
+        public GameObject deadZone;
 
         [Header("Settings")]
         public int level = 1;
         public int sizeMaze = 3; // 3x3 size maze
 
         // events callback
-        public System.Action OnGenerateMazeFinish;
+        public Action OnGenerateMazeFinish;
 
         private List<GameObject> _instances;
+        private GameObject _deadZoneInstance;
 
         public void GenerateMaze()
         {
-            for(var i = 1; i <= sizeMaze; i++)
+            gameObject.transform.position = Vector3.zero;
+
+            for (var i = 0; i < sizeMaze; i++)
             {
-                for(var j = 1; j <= sizeMaze; j++)
+                for(var j = 0; j < sizeMaze; j++)
                 {
-                    var mazeSlice = mazeSliceList[Random.Range(0, mazeSliceList.Count)];
-                    (float x, float z) size = GetSizeFloor(mazeSlice);
+                    var mazeSlice = mazeSliceList[UnityEngine.Random.Range(0, mazeSliceList.Count)];
                     var instance = Instantiate(mazeSlice, gameObject.transform);
+                    (float x, float z) size = GetSizeFloor(mazeSlice);
 
                     instance.transform.position = new Vector3(i * size.x, gameObject.transform.position.y, j * size.z);
-                    
+
                     _instances.Add(instance);
                 }
 
             }
+
+            AddedDeadZone();
 
             OnGenerateMazeFinish?.Invoke();
         }
@@ -49,15 +57,22 @@ namespace Lalo.Managers
             return (mesh.bounds.size.x * 2, mesh.bounds.size.z * 2);
         }
 
+        private void AddedDeadZone()
+        {
+            _deadZoneInstance = Instantiate(deadZone, gameObject.transform);
+            float size = sizeMaze * sizeMaze;
+
+            _deadZoneInstance.transform.localScale = new Vector3(size, 1, size);
+            _deadZoneInstance.transform.DOMoveY(-10, 0);
+        }
+
         #region --- Unity Events ---
-        private void Awake()
+ 
+        private void Start()
         {
             if (_instances == null)
                 _instances = new List<GameObject>();
-        }
 
-        private void Start()
-        {
             GenerateMaze();
         }
         #endregion

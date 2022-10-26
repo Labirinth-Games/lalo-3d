@@ -13,19 +13,26 @@ namespace Lalo
         [Header("References")]
         public SOPlayerSettings playerSettings;
         public ControllerHelper controllerHelper;
+        public LevelManager levelManager;
+
+        [Header("Tags Useds")]
+        public string deadZoneTag = "End Map Zone";
 
 
-        //private SubscribeEventCalback<Player> events;
+        private SubscribeEventCalback _events = new SubscribeEventCalback();
 
         public void Spawn()
         {
-            transform.position = LevelManager.Instance.transform.position;
-            transform.DOMoveY(10, 1f);
-
-            Debug.Log("chamou aqui");
+            transform.position = SpawnManager.Instance.GetSpawn();
+            transform.DOMoveY(2, .1f).SetEase(Ease.OutBounce);
         }
 
         #region --- Unity Events ---
+
+        private void Start()
+        {
+            SpawnManager.Instance.OnHasAllSpawnPositions += Spawn;
+        }
 
         private void OnValidate()
         {
@@ -39,8 +46,24 @@ namespace Lalo
             {
                 controllerHelper.Move();
                 controllerHelper.Jump();
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    Application.LoadLevel(0);
+                }
             }
             else Debug.Log("Ops sem controller para andar");
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.CompareTag(deadZoneTag))
+                Debug.Log("Ops Morreu");
+        }
+
+        private void OnDestroy()
+        {
+            SpawnManager.Instance.OnHasAllSpawnPositions -= Spawn;
         }
         #endregion
     }
